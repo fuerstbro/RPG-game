@@ -1,3 +1,4 @@
+from os import system
 import random
 import time
 
@@ -71,11 +72,11 @@ terrains = [
 item_price = 0
 
 shop = [
-  "capsule holder",
-  "luck coin",
   "knife",
   "gun",
   "ammo",
+  "capsule holder",
+  "luck coin",
   "hp pack",
   "food"
 ]
@@ -145,6 +146,7 @@ class player():
       print("You have no energy!")
     
     print("You have " + str(player.chance) + " chance of finding a minilon.")
+    input("Press enter to continue: ")
 
   def fight():
     if player.found == True:
@@ -198,12 +200,15 @@ class player():
               player.index.append(minilon.name)
               if minilon.name in typemonlv1:
                 typemonlv1.remove(minilon.name)
+                input("Press enter to continue: ")
                 break
               elif minilon.name in typemonlv2:
                 typemonlv2.remove(minilon.name)
+                input("Press enter to continue: ")
                 break
               elif minilon.name in typemonlv3:
                 typemonlv3.remove(minilon.name)
+                input("Press enter to continue: ")
                 break
             else:
               print("The " + minilon.name + " dodged the capsule. It still has too much hp.")
@@ -214,6 +219,7 @@ class player():
             print("You won the battle!")
             print("You recieved " + str(minilon.reward_for_kill) + " coins!")
             player.coins += minilon.reward_for_kill
+            input("Press enter to continue: ")
             break
 
           print("The minilon attacks!")
@@ -243,6 +249,7 @@ class player():
           if player.hp <= 0:
             print("The " + minilon.name + " killed you.")
             player.dead = True
+            input("Press enter to continue: ")
             break
             
     else:
@@ -289,6 +296,7 @@ class player():
         else:
           print(" see nothing.")
           player.searched = True
+      input("Press enter to continue: ")
     else:
       print("You searched already!")
 
@@ -355,16 +363,20 @@ print("You now have " + str(player.capsules) + " capsules!")
 time.sleep(3)
 print("Remember, you have to catch all the minilons and bring them to me.")
 types = [
-  "move",
-  "fight",
+  "index",
   "shop",
   "inv",
-  "search",
-  "stats",
-  "index",
   "use",
+  "stats",
+  "move",
+  "search",
+  "fight",
   "forage"
 ]
+
+# clear func
+def clear(): 
+  system('clear')
 
 # Start The Game!
 while player.dead == False:
@@ -373,6 +385,7 @@ while player.dead == False:
   rand_lv2 = random.randrange(0, len(typemonlv2))
   rand_lv3 = random.randrange(0, len(typemonlv3))
   time.sleep(2)
+  clear()
   print("")
   print("What do you want to do?")
   for x in types:
@@ -440,6 +453,7 @@ while player.dead == False:
       for x in player.inv:
         print(str(y) + ". " + x)
         y += 1
+      input("Press enter to continue: ")
     else:
       print("You don't have any items!")
   # search for minilons
@@ -456,6 +470,7 @@ while player.dead == False:
       print(player.name + " has " + str(player.stab_damage) + " stabbing power!")
     if player.shoot_damage != 0:
       print(player.name + " has " + player.shoot_damage + " shooting power!")
+    input("Press enter to continue: ")
   # display caught minilons
   elif what_to_do == "index":
     if len(player.index) != 0:
@@ -464,6 +479,7 @@ while player.dead == False:
         print(str(y) + ". " + x)
         time.sleep(2)
         y += 1
+      input("Press enter to continue: ")
     else:
       print("You don't have any minilons!")
   # use an item in your inv
@@ -501,6 +517,7 @@ elif player.I_Caught_Em_All == True:
   time.sleep(5)
   print("You saved the world!")
   print("or... so you thought...")
+  clear()
   time.sleep(3)
   print("Prof R: Wake up ," + player.name + "!")
   time.sleep(2)
