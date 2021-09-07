@@ -43,6 +43,7 @@ typemonlv2 = [
   "Trialight",
   "Drako",
   "Shang-ri",
+  "Mortuus",
   "Wrangler"
 ]
 
@@ -349,7 +350,7 @@ player.name = input("")
 print("Oh. It was " + player.name + ", was it? Anyway, I hope you have luck catching the minilons!")
 time.sleep(3)
 
-print("Oh, and before I forget, here are a couple capsules to help you along!")
+print("Oh, and before I forget, here are a list and a couple capsules to help you along!")
 player.capsules += 5
 print("You now have " + str(player.capsules) + " capsules!")
 time.sleep(3)
@@ -363,7 +364,8 @@ types = [
   "stats",
   "index",
   "use",
-  "forage"
+  "forage",
+  "list"
 ]
 
 # Start The Game!
@@ -475,6 +477,29 @@ while player.dead == False:
   elif what_to_do == "forage":
     player.forage()
 
+  elif what_to_do == "list":
+    a = 1
+    print("")
+    print("level 1")
+    time.sleep(1)
+    for x in typemonlv1:
+      time.sleep(.5)
+      print(str(a) + ". " + x)
+      a += 1
+    print("")
+    print("level 2")
+    time.sleep(1)
+    for x in typemonlv2:
+      time.sleep(.5)
+      print(str(a) + ". " + x)
+      a += 1
+    print("")
+    print("level 3")
+    time.sleep(1)
+    for x in typemonlv3:
+      time.sleep(.5)
+      print(str(a) + ". " + x)
+      a += 1
   else:
     print("That's not a valid option!")
   
